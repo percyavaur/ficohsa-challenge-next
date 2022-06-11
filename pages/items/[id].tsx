@@ -82,9 +82,7 @@ export default ItemById;
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const { data }: any = await animeServices.getAllAnimes();
-  const animesId: Array<string> = data.map((item: Item) =>
-    item.mal_id.toString()
-  );
+  const animesId = [...Array(1)].map((value, index) => `${index + 1}`);
 
   return {
     paths: animesId.map((id) => ({
