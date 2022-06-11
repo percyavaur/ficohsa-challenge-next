@@ -6,7 +6,6 @@ import { SEOLayout } from "../../components/layout";
 import animeServices from "../../services/animeServices";
 import { Item } from "../../core/types/item";
 import DetailSkeleton from "../../components/skeletons/DetailSkeleton";
-import { useRouter } from "next/router";
 
 interface Props {
   anime: Item;
@@ -82,10 +81,13 @@ const ItemById: NextPage<Props> = ({ anime, loading }) => {
 export default ItemById;
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const animes = [...Array(200)].map((value, index) => `${index + 1}`);
+  const { data }: any = await animeServices.getAllAnimes();
+  const animesId: Array<string> = data.map((item: Item) =>
+    item.mal_id.toString()
+  );
 
   return {
-    paths: animes.map((id) => ({
+    paths: animesId.map((id) => ({
       params: { id },
     })),
     // fallback: false
@@ -100,12 +102,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const anime: any = await animeServices.getAnimeById(id);
   loading = false;
 
-  console.log('anime :>> ', anime);
-
   if (!anime) {
     return {
       redirect: {
-        destination: "/404",
+        destination: "/",
         permanent: false,
       },
     };
@@ -114,8 +114,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       anime: anime.data,
-      loading,
     },
-    revalidate: 86400, // 60 * 60 * 24,
   };
 };
