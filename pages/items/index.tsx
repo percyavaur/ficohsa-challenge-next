@@ -19,6 +19,8 @@ const ItemsPage = () => {
     if (search) {
       setSearchText(search as string);
       searchAnime(search as string);
+    } else {
+      setLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);

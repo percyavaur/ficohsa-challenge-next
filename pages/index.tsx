@@ -11,8 +11,7 @@ const HomePage: NextPage<Props> = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/items?search=${search}`);
-    /*  navigate(`../items?search=${search}`, { replace: false }); */
+    if (search) router.push(`/items?search=${search}`);
   };
 
   return (
