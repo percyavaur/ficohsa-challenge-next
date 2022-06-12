@@ -1,6 +1,7 @@
 import { NextPage, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import { SEOLayout } from "../components/layout";
 
 interface Props {}
@@ -28,14 +29,19 @@ const HomePage: NextPage<Props> = () => {
             handleSubmit(e);
           }}
         >
-          <input
-            type="search"
-            autoFocus
-            className="border rounded-md border-gray-400 px-4 py-2"
-            placeholder="Search animes"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+          <div className="border rounded-md border-gray-400 px-4 py-2 bg-gray-50 flex items-center">
+            <input
+              type="search"
+              autoFocus
+              placeholder="Search animes"
+              value={search}
+              className="bg-gray-50"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button type="submit" className="border-l pl-3 border-gray-400">
+              <FaSearch />
+            </button>
+          </div>
         </form>
       </div>
     </SEOLayout>
