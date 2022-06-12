@@ -32,10 +32,9 @@ const HomePage: NextPage<Props> = () => {
           <div className="border rounded-md border-gray-400 px-4 py-2 bg-gray-50 flex items-center">
             <input
               type="search"
-              autoFocus
               placeholder="Search animes"
               value={search}
-              className="bg-gray-50"
+              className="bg-gray-50 p-1 border-transparent focus:border-transparent focus:ring-0 outline outline-offset-0 outline-0"
               onChange={(e) => setSearch(e.target.value)}
             />
             <button type="submit" className="border-l pl-3 border-gray-400">

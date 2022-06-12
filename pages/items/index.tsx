@@ -81,20 +81,19 @@ const ItemsPage = () => {
               </div>
             </div>
           ))}
-
-          {result.length === 0 && !loading ? (
-            <div className="perfect_center w-screen flex flex-col md:flex-row items-center justify-center">
-              <FaSadTear
-                className="mb-8 mr-0 md:mr-2"
-                color="rgb(96 165 250)"
-                size={40}
-              />
-              <p className="font-bold text-3xl pb-10 max-w-md text-center text-blue-400">
-                we did not find the anime you are looking for
-              </p>
-            </div>
-          ) : null}
         </div>
+        {result.length === 0 && !loading ? (
+          <div className="items__h w-screen flex flex-col md:flex-row items-center justify-center">
+            <FaSadTear
+              className="mb-8 mr-0 md:mr-2"
+              color="rgb(96 165 250)"
+              size={40}
+            />
+            <p className="font-bold text-xl md:text-3xl pb-10 max-w-xs md:max-w-md text-center text-blue-400">
+              we did not find the anime you are looking for
+            </p>
+          </div>
+        ) : null}
       </div>
     </SEOLayout>
   );
